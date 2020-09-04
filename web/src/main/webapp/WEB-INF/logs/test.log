@@ -25,3 +25,11 @@
 16:40:44.475 [http-nio-8080-exec-6] DEBUG com.example.web.mapper.MenuMapper.selectRelatedMenu - ==> Parameters: 1(Integer)
 16:40:44.485 [http-nio-8080-exec-6] DEBUG com.example.web.mapper.MenuMapper.selectRelatedMenu - <==      Total: 1
 16:40:44.494 [http-nio-8080-exec-5] INFO  com.example.web.controller.LoginController - ＝＝＝进入后台主页面＝＝＝
+17:42:09.046 [http-nio-8080-exec-5] INFO  com.example.web.controller.UseRecordController - ＝＝＝进入使用记录查询页面＝＝＝
+17:42:09.403 [http-nio-8080-exec-9] INFO  com.example.web.controller.UseRecordController - ＝＝＝正在根据查询条件加载使用记录＝＝＝
+17:42:09.469 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.queryUseRecordByCondition - ==>  Preparing: select * from interface_use_record where 1=1 limit ?, ?
+17:42:09.469 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.queryUseRecordByCondition - ==> Parameters: 0(Integer), 10(Integer)
+17:42:09.628 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.queryUseRecordByCondition - <==      Total: 10
+17:42:09.631 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.countUseRecordByCondition - ==>  Preparing: select count(1) from interface_use_record where 1=1
+17:42:09.631 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.countUseRecordByCondition - ==> Parameters: 
+17:42:09.679 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.countUseRecordByCondition - <==      Total: 1

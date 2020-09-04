@@ -1081,3 +1081,5 @@ java.lang.IllegalArgumentException: not support type : class com.example.web.ent
 16:40:43.998 [http-nio-8080-exec-6] INFO  com.example.web.controller.LoginController - ＝＝＝登录操作＝＝＝
 16:40:44.459 [http-nio-8080-exec-6] INFO  com.example.web.session.OperatorSessionHandler - ＝＝＝创建操作员会话＝＝＝
 16:40:44.494 [http-nio-8080-exec-5] INFO  com.example.web.controller.LoginController - ＝＝＝进入后台主页面＝＝＝
+17:42:09.046 [http-nio-8080-exec-5] INFO  com.example.web.controller.UseRecordController - ＝＝＝进入使用记录查询页面＝＝＝
+17:42:09.403 [http-nio-8080-exec-9] INFO  com.example.web.controller.UseRecordController - ＝＝＝正在根据查询条件加载使用记录＝＝＝
