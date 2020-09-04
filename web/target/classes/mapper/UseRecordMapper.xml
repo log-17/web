@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 指定这个xml所对应的是哪个mapper接口 -->
+<mapper namespace="com.example.web.mapper.UseRecordMapper">
+
+    <resultMap type="com.example.web.entity.UseRecord" id="UseRecord">
+        <!-- column:查询出来的字段名
+             property:对象中属性名 -->
+        <id column="id" property="id" />
+        <result column="service_code" property="serviceCode" />
+        <result column="create_date" property="createDate" />
+        <result column="input_date" property="inputDate" />
+        <result column="output_date" property="outputDate" />
+        <result column="is_suc" property="isSuc" />
+    </resultMap>
+
+    <select id="queryUseRecordByCondition" resultMap="UseRecord">
+        select *
+        from interface_use_record
+        where 1=1
+        <if test="serviceCode != ''">
+            and service_code like concat('%',#{serviceCode},'%')
+        </if>
+        <if test="startDateStr != '' and endDateStr != ''">
+            and create_date between #{startDateStr} and #{endDateStr}
+        </if>
+        limit #{startNum}, #{pageSize}
+    </select>
+
+    <select id="countUseRecordByCondition" resultType="java.lang.Integer">
+        select count(1)
+        from interface_use_record
+        where 1=1
+        <if test="serviceCode != ''">
+            and service_code like concat('%',#{serviceCode},'%')
+        </if>
+        <if test="startDateStr != '' and endDateStr != ''">
+            and create_date between #{startDateStr} and #{endDateStr}
+        </if>
+    </select>
+
+</mapper>

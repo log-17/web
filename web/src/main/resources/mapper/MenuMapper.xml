@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 指定这个xml所对应的是哪个mapper接口 -->
+<mapper namespace="com.example.web.mapper.MenuMapper">
+
+    <resultMap type="com.example.web.entity.Menu" id="Menu">
+        <!-- column:查询出来的字段名
+             property:对象中属性名 -->
+        <id column="m_id" property="menuID"/>
+        <result column="m_name" property="menuName"/>
+        <result column="m_url" property="menuURL"/>
+        <result column="m_type" property="menuType"/>
+        <result column="m_level" property="menuLevel"/>
+        <result column="m_status" property="menuStatus"/>
+        <result column="parent_id" property="parentMenuID"/>
+    </resultMap>
+
+    <select id="selectRelatedMenu" resultMap="Menu">
+        select *
+        from menu
+        where 1=1
+        and m_id in (
+            select m_id
+            from position_menu
+            where 1=1
+            and p_id=#{positionId}
+        )
+    </select>
+
+</mapper>

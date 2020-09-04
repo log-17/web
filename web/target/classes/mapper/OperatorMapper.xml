@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 指定这个xml所对应的是哪个mapper接口 -->
+<mapper namespace="com.example.web.mapper.OperatorMapper">
+
+    <resultMap type="com.example.web.entity.Operator" id="Operator">
+        <!-- column:查询出来的字段名
+             property:对象中属性名 -->
+        <id column="o_id" property="id" />
+        <result column="o_code" property="operatorCode" />
+        <result column="o_name" property="operatorName" />
+        <result column="o_pwd" property="operatorPassword" />
+        <result column="create_date" property="createDate" />
+    </resultMap>
+
+    <insert id="insert" parameterType="Operator">
+        insert into operator(o_code, o_pwd, create_date) values (#{operatorCode},#{operatorPassword},#{createDate})
+    </insert>
+
+    <select id="queryByOperatorCode" resultMap="Operator">
+        select *
+        from operator
+        where 1=1
+        and o_code=#{operatorCode}
+    </select>
+
+<!--    <update id="update" parameterType="Operator">-->
+<!--        update operator-->
+<!--        set OPERATOR_CODE=#{operatorCode}, OPERATOR_PASSWORD=#{operatorPassword}-->
+<!--        where 1=1-->
+<!--    </update>-->
+
+</mapper>

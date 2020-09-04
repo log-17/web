@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body, html {
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    width: 100%;
+    font-family: "Microsoft Yahei", "微软雅黑", "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.navbar.navbar-default {
+    margin: 0;
+    padding: 0;
+}
+
+.iframe-content {
+    margin: 20px;
+    padding: 0;
+    border: 0;
+    width: 97%;
+    height: 550px;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+}

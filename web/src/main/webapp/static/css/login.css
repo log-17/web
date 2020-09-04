@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+*{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+}
+
+body,html {
+    margin:0 auto;
+    padding:0;
+    height:100%;
+    overflow: hidden;
+}
+
+body{
+    width:100%;
+    font-family: "Microsoft Yahei", "微软雅黑", "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container{
+    margin-top: 160px;
+}
+
+.form-group{
+    margin: 20px;
+}
+
+.error{
+    color: #a94442;
+}
+
+#loginButton{
+    outline: none;
+}
