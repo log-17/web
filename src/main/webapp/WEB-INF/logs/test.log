@@ -1,0 +1,35 @@
+16:40:22.979 [restartedMain] INFO  com.example.web.DemoApplication - Starting DemoApplication on DESKTOP-58NJNU1 with PID 3820 (D:\workspace\IdeaProjects\web\target\classes started by 17H03 in D:\workspace\IdeaProjects\web)
+16:40:22.985 [restartedMain] INFO  com.example.web.DemoApplication - No active profile set, falling back to default profiles: default
+16:40:23.648 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+16:40:27.045 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+16:40:27.047 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+16:40:27.365 [localhost-startStop-1] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16:40:27.378 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+16:40:28.392 [restartedMain] INFO  io.shardingsphere.transaction.core.loader.SPIDataSourceMapConverter - Could not find XA DataSourceConverter, XA transaction will not be effective
+16:40:28.440 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+16:40:32.220 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+16:40:32.225 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler [http-nio-8080]
+16:40:32.234 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+16:40:32.257 [restartedMain] INFO  com.example.web.DemoApplication - Started DemoApplication in 10.178 seconds (JVM running for 12.927)
+16:40:39.228 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+16:40:39.273 [http-nio-8080-exec-1] INFO  com.example.web.controller.LoginController - ＝＝＝进入登录页面＝＝＝
+16:40:43.998 [http-nio-8080-exec-6] INFO  com.example.web.controller.LoginController - ＝＝＝登录操作＝＝＝
+16:40:44.034 [http-nio-8080-exec-6] DEBUG com.example.web.mapper.OperatorMapper.queryByOperatorCode - ==>  Preparing: select * from operator where 1=1 and o_code=?
+16:40:44.052 [http-nio-8080-exec-6] DEBUG com.example.web.mapper.OperatorMapper.queryByOperatorCode - ==> Parameters: 001(String)
+16:40:44.453 [http-nio-8080-exec-6] DEBUG com.example.web.mapper.OperatorMapper.queryByOperatorCode - <==      Total: 1
+16:40:44.459 [http-nio-8080-exec-6] INFO  com.example.web.session.OperatorSessionHandler - ＝＝＝创建操作员会话＝＝＝
+16:40:44.460 [http-nio-8080-exec-6] DEBUG com.example.web.mapper.PositionMapper.selectPositionByOperatorId - ==>  Preparing: select * from position where 1=1 and p_id in ( select p_id from operator_position where 1=1 and o_id=? )
+16:40:44.460 [http-nio-8080-exec-6] DEBUG com.example.web.mapper.PositionMapper.selectPositionByOperatorId - ==> Parameters: 4(Integer)
+16:40:44.474 [http-nio-8080-exec-6] DEBUG com.example.web.mapper.PositionMapper.selectPositionByOperatorId - <==      Total: 1
+16:40:44.475 [http-nio-8080-exec-6] DEBUG com.example.web.mapper.MenuMapper.selectRelatedMenu - ==>  Preparing: select * from menu where 1=1 and m_id in ( select m_id from position_menu where 1=1 and p_id=? )
+16:40:44.475 [http-nio-8080-exec-6] DEBUG com.example.web.mapper.MenuMapper.selectRelatedMenu - ==> Parameters: 1(Integer)
+16:40:44.485 [http-nio-8080-exec-6] DEBUG com.example.web.mapper.MenuMapper.selectRelatedMenu - <==      Total: 1
+16:40:44.494 [http-nio-8080-exec-5] INFO  com.example.web.controller.LoginController - ＝＝＝进入后台主页面＝＝＝
+17:42:09.046 [http-nio-8080-exec-5] INFO  com.example.web.controller.UseRecordController - ＝＝＝进入使用记录查询页面＝＝＝
+17:42:09.403 [http-nio-8080-exec-9] INFO  com.example.web.controller.UseRecordController - ＝＝＝正在根据查询条件加载使用记录＝＝＝
+17:42:09.469 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.queryUseRecordByCondition - ==>  Preparing: select * from interface_use_record where 1=1 limit ?, ?
+17:42:09.469 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.queryUseRecordByCondition - ==> Parameters: 0(Integer), 10(Integer)
+17:42:09.628 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.queryUseRecordByCondition - <==      Total: 10
+17:42:09.631 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.countUseRecordByCondition - ==>  Preparing: select count(1) from interface_use_record where 1=1
+17:42:09.631 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.countUseRecordByCondition - ==> Parameters: 
+17:42:09.679 [http-nio-8080-exec-9] DEBUG com.example.web.mapper.UseRecordMapper.countUseRecordByCondition - <==      Total: 1
