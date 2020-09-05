@@ -1,6 +1,12 @@
 # Web Project
-Language : Java  
+Compiler : IntelliJ IDEA  
 Tool : Maven  
-Framework : Spring Boot, MyBatis  
+Language : HTML, CSS, JQuery, Java  
+Front-end framework : Bootstrap  
+Table : Bootstrap Table  
+Dynamic web : JSP  
+Back-end framework : Spring Boot, MyBatis  
 Database : MySQL  
-Sub-library sub-table framework ： Sharding-JDBC
+Sub-library sub-table framework ： Sharding-JDBC  
+
+Target : Dynamically loads the menu according to operator permissions.
