@@ -17,7 +17,7 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand">欢迎</a>
+            <a class="navbar-brand">欢迎您</a>
         </div>
         <div>
             <ul class="nav navbar-nav">
