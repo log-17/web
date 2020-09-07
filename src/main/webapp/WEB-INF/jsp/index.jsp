@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/static/inc/tld.inc" %>
@@ -20,12 +21,13 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li>
-                    <a class="menu-item" name="queryUseRecord">使用记录</a>
-                </li>
-                <li>
-                    <a class="menu-item" >SVN</a>
-                </li>
+
+                <c:forEach items="${menuList}" var="menu">
+                    <li>
+                        <a class="menu-item" name="${menu.menuURL}">${menu.menuName}</a>
+                    </li>
+                </c:forEach>
+
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">Java
                         <b class="caret"></b>
