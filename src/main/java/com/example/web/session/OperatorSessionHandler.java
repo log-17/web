@@ -1,16 +1,22 @@
 package com.example.web.session;
 
-import com.alibaba.druid.support.json.JSONUtils;
+import com.alibaba.druid.filter.config.ConfigTools;
 import com.example.web.entity.Menu;
 import com.example.web.entity.Operator;
+import com.example.web.entity.OperatorSession;
 import com.example.web.entity.Position;
-import com.example.web.mapper.PositionMapper;
 import com.example.web.mapper.MenuMapper;
+import com.example.web.mapper.PositionMapper;
+import com.example.web.util.ConstantUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -23,13 +29,40 @@ public class OperatorSessionHandler {
     @Autowired
     MenuMapper menuMapper;
 
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
     private static final Logger logger = Logger.getLogger(OperatorSessionHandler.class.getName());
 
-    public void createOperatorSession(HttpServletRequest request, HttpServletResponse response, Operator operator) {
+    public OperatorSession createOperatorSession(HttpServletRequest request, HttpServletResponse response, Operator operator) throws Exception {
         logger.info("＝＝＝创建操作员会话＝＝＝");
         Position position = positionMapper.selectPositionByOperatorId(operator.getId());
         List<Menu> menuList = menuMapper.selectRelatedMenu(position.getPositionId());
 
+        DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+
+        OperatorSession operatorSession = new OperatorSession();
+        operatorSession.setSessionId(request.getSession().getId());
+        operatorSession.setMenuList(menuList);
+        operatorSession.setToken(ConfigTools.encrypt(operator.getId().toString()));
+        operatorSession.setThisLoginTime(df.format(new Date()));
+        operatorSession.setLastLoginTime(df.format(new Date()));
+
+        Cookie cookie = new Cookie(ConstantUtil.OPERATOR_SESSION_KEY, operatorSession.getToken());
+        cookie.setPath("/");
+        response.addCookie(cookie);
+
+        return operatorSession;
+    }
+
+    public void destroyOperatorSession(HttpServletRequest request, HttpServletResponse response) {
+        logger.info("＝＝＝销毁操作员会话＝＝＝");
+        Cookie[] cookies = request.getCookies();
+        for (int i = 0; i < cookies.length; i++) {
+            if (cookies[i].getName().equals(ConstantUtil.OPERATOR_SESSION_KEY)) {
+                cookies[i].setMaxAge(0);
+                response.addCookie(cookies[i]);
+            }
+        }
     }
 
 }
