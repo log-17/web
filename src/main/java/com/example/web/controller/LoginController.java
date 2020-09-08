@@ -1,5 +1,6 @@
 package com.example.web.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.example.web.entity.Menu;
 import com.example.web.entity.Operator;
 import com.example.web.entity.OperatorSession;
@@ -41,7 +42,6 @@ public class LoginController {
     @RequestMapping(value = "/verifyLogin", method = RequestMethod.POST)
     public String verifyLogin(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam String operatorCode, @RequestParam String operatorPassword) throws Exception {
         logger.info("＝＝＝登录操作＝＝＝");
-        System.out.println(request.getParameter("operatorCode"));
         Operator operator = operatorService.queryByOperatorCode(operatorCode);
         if (operator == null) {
             logger.info("登陆失败，工号不存在");
@@ -70,9 +70,13 @@ public class LoginController {
     public String index(Model model, HttpServletRequest request) {
         logger.info("＝＝＝进入后台主页面＝＝＝");
         OperatorSession operatorSession = (OperatorSession) request.getSession().getAttribute(ConstantUtil.OPERATOR_SESSION_KEY);
-        Map<Menu, List<Menu>> menuMap = operatorSession.getMenuMap();
-        model.addAttribute("menuMap", menuMap);
-        return "index";
+        if (operatorSession == null) {
+            return "redirect:/login";
+        } else {
+            Map<Menu, List<Menu>> menuMap = operatorSession.getMenuMap();
+            model.addAttribute("menuMap", menuMap);
+            return "index";
+        }
     }
 
 }
