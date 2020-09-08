@@ -25,10 +25,4 @@
         and o_code=#{operatorCode}
     </select>
 
-<!--    <update id="update" parameterType="Operator">-->
-<!--        update operator-->
-<!--        set OPERATOR_CODE=#{operatorCode}, OPERATOR_PASSWORD=#{operatorPassword}-->
-<!--        where 1=1-->
-<!--    </update>-->
-
 </mapper>
