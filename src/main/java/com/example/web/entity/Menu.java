@@ -6,7 +6,7 @@ public class Menu implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer menuID;
+    private Integer menuId;
 
     private String menuName;
 
@@ -18,14 +18,14 @@ public class Menu implements Serializable {
 
     private Integer menuStatus;
 
-    private Integer parentMenuID;
+    private Integer parentMenuId;
 
-    public Integer getMenuID() {
-        return menuID;
+    public Integer getMenuId() {
+        return menuId;
     }
 
-    public void setMenuID(Integer menuID) {
-        this.menuID = menuID;
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
     }
 
     public String getMenuName() {
@@ -68,12 +68,12 @@ public class Menu implements Serializable {
         this.menuStatus = menuStatus;
     }
 
-    public Integer getParentMenuID() {
-        return parentMenuID;
+    public Integer getParentMenuId() {
+        return parentMenuId;
     }
 
-    public void setParentMenuID(Integer parentMenuID) {
-        this.parentMenuID = parentMenuID;
+    public void setParentMenuId(Integer parentMenuId) {
+        this.parentMenuId = parentMenuId;
     }
 
 }
