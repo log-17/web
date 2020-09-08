@@ -9,41 +9,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>主页</title>
     <link href="<c:url value='/static/css/frame.css'/>" rel="stylesheet" type="text/css">
-    <%@ include file="/static/inc/css-link.inc"%>
-    <%@ include file="/static/inc/js-link.inc"%>
+    <%@ include file="/static/inc/css-link.inc" %>
+    <%@ include file="/static/inc/js-link.inc" %>
 </head>
 
 <body>
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand">欢迎您</a>
+            <a class="navbar-brand">欢迎</a>
         </div>
         <div>
             <ul class="nav navbar-nav">
 
-                <c:forEach items="${menuList}" var="menu">
-                    <li>
-                        <a class="menu-item" name="${menu.menuURL}">${menu.menuName}</a>
-                    </li>
+                <c:forEach items="${menuMap}" var="m">
+                    <%--如果没有子菜单--%>
+                    <c:if test="${m.value.size()==0}">
+                        <li>
+                            <a class="menu-item" name="${m.key.menuURL}">${m.key.menuName}</a>
+                        </li>
+                    </c:if>
+                    <%--如果有子菜单--%>
+                    <c:if test="${m.value.size()!=0}">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">${m.key.menuName}
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <c:forEach items="${m.value}" var="menu">
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown"
+                                           name="${menu.menuURL}">${menu.menuName}</a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </li>
+                    </c:if>
                 </c:forEach>
 
-                <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Java
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a id="action-1" href="#">jmeter</a>
-                        </li>
-                        <li>
-                            <a href="#">EJB</a>
-                        </li>
-                        <li>
-                            <a href="#">Jasper Report</a>
-                        </li>
-                    </ul>
-                </li>
                 <li>
                     <a href="<c:url value='/logOut'/>">退出登录</a>
                 </li>
@@ -58,9 +61,14 @@
     </iframe>
 </div>
 <script>
-    $(".menu-item").click(function(){
+    $(".menu-item").click(function () {
         var src = $(this).attr("name");
-        $(".iframe-content").attr("src",src);
+        $(".iframe-content").attr("src", src);
+    });
+
+    $(".dropdown-toggle").click(function () {
+        var src = $(this).attr("name");
+        $(".iframe-content").attr("src", src);
     });
 </script>
 </body>
