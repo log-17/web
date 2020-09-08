@@ -7,13 +7,13 @@
     <resultMap type="com.example.web.entity.Menu" id="Menu">
         <!-- column:查询出来的字段名
              property:对象中属性名 -->
-        <id column="m_id" property="menuID"/>
+        <id column="m_id" property="menuId"/>
         <result column="m_name" property="menuName"/>
         <result column="m_url" property="menuURL"/>
         <result column="m_type" property="menuType"/>
         <result column="m_level" property="menuLevel"/>
         <result column="m_status" property="menuStatus"/>
-        <result column="parent_id" property="parentMenuID"/>
+        <result column="parent_id" property="parentMenuId"/>
     </resultMap>
 
     <select id="selectRelatedMenu" resultMap="Menu">
@@ -26,6 +26,13 @@
             where 1=1
             and p_id=#{positionId}
         )
+    </select>
+
+    <select id="findMenuById" resultMap="Menu">
+        select *
+        from menu
+        where 1=1
+        and m_id=#{menuId}
     </select>
 
 </mapper>
